@@ -292,6 +292,206 @@ class BigInteger {
                 A[i+j+1]=sum % 10;
             }
         }
+        string finalanswer = "";
+        for(int i=0;i<m+n;i++)
+        {
+            if(A[i]==0 && flag==0 ){}
+                else if(A[i]!=0 )
+                    flag=1;
+
+            if(flag==1)
+                finalanswer += (char)(A[i]+48);
+        }
+        if(finalanswer.length() == 0)
+            finalanswer = "0";
+        return finalanswer;
+    }
+
+    BigInteger operator++()
+    {
+        string s = "1";
+        str = add(this->str,s);
+        return *this;
+    }
+
+    BigInteger operator--()
+    {
+        string s = "1";
+        str = subtract(this->str,s);
+        return *this;
+    }
+
+    BigInteger operator++(int)
+    {
+        BigInteger N3;
+        N3.str = this->str;
+        string s = "1";
+        str = add(this->str,s);
+        return N3;
+    }
+
+    BigInteger operator--(int)
+    {
+        BigInteger N3;
+        N3.str = this->str;
+        string s = "1";
+        str = subtract(this->str,s);
+        return N3;
+    }
+       string finalanswer = "";
+        for(int i=0;i<m+n;i++)
+        {
+            if(A[i]==0 && flag==0 ){}
+                else if(A[i]!=0 )
+                    flag=1;
+
+            if(flag==1)
+                finalanswer += (char)(A[i]+48);
+        }
+        if(finalanswer.length() == 0)
+            finalanswer = "0";
+        return finalanswer;
+    }
+
+    BigInteger operator++()
+    {
+        string s = "1";
+        str = add(this->str,s);
+        return *this;
+    }
+
+    BigInteger operator--()
+    {
+        string s = "1";
+        str = subtract(this->str,s);
+        return *this;
+    }
+
+    BigInteger operator++(int)
+    {
+        BigInteger N3;
+        N3.str = this->str;
+        string s = "1";
+        str = add(this->str,s);
+        return N3;
+    }
+
+    BigInteger operator--(int)
+    {
+        BigInteger N3;
+        N3.str = this->str;
+        string s = "1";
+        str = subtract(this->str,s);
+        return N3;
+    }
+     friend BigInteger operator *(BigInteger &N1,int num)
+    {
+        BigInteger N3;
+        ostringstream convertstr;
+        convertstr << num;
+        N3.str = convertstr.str();
+        N3.str = multiply(N1.str,N3.str);
+        return N3;
+    }
+
+    friend BigInteger operator /(BigInteger &N1,int num)
+    {
+        BigInteger N3;
+        N3.str = division(N1.str,(long long int)num);
+        return N3;
+    }
+
+    friend BigInteger operator +(int num, BigInteger &N1)
+    {
+        BigInteger N3;
+        ostringstream convertstr;
+        convertstr << num;
+        N3.str = convertstr.str();
+        N3.str = add(N1.str,N3.str);
+        return N3;
+    }
+
+    friend BigInteger operator -(int num, BigInteger &N1)
+    {
+        BigInteger N3;
+        ostringstream convertstr;
+        convertstr << num;
+        N3.str = convertstr.str();
+        N3.str = subtract(N3.str,N1.str);
+        return N3;
+    }
+
+    friend BigInteger operator *(int num, BigInteger &N1)
+    {
+        BigInteger N3;
+        ostringstream convertstr;
+        convertstr << num;
+        N3.str = convertstr.str();
+        N3.str = multiply(N1.str,N3.str);
+        return N3;
+    }
+  friend BhimInteger operator /(int num, BhimInteger &N1)
+    {
+        BhimInteger N3;
+        ostringstream convertstr;
+        convertstr << num;
+        N3.str = convertstr.str();
+        string s2 = N1.str;
+        stringstream convertnum(s2);
+        long long int div = 0;
+        convertnum>>div;
+        N3.str = division(N3.str,div);
+        return N3;
+    }
+
+    static string division(string s1, long long int div)
+    {
+        string result;
+        int index = 0;
+        long long int temp = s1[index] - '0';
+        while (temp < div)
+        {
+            temp = temp*10 + (s1[++index] - '0');
+
+            if(index >= s1.length())
+                break;
+        }
+
+
+        while (s1.length() > index) {
+            result += (temp / div) + '0';
+            temp = (temp % div)*10 + s1[++index] - '0';
+        }
+
+        if (result.length() == 0)
+            return "0";
+
+        return result;
+    }
+
+    static string division(string s1, int div)
+    {
+        string result;
+        int index = 0;
+        int temp = s1[index] - '0';
+        while (temp < div)
+        {
+            temp = temp*10 + (s1[++index] - '0');
+
+            if(index >= s1.length())
+                break;
+        }
+
+
+        while (s1.length() > index) {
+            result += (temp / div) + '0';
+            temp = (temp % div)*10 + s1[++index] - '0';
+        }
+
+        if (result.length() == 0)
+            return "0";
+
+        return result;
+    }
+
     
-}
-}
