@@ -1,7 +1,7 @@
  //An Implementation of BigInteger library in C++
 
  #define BigInteger_H_INCLUDED
-#define BigInteger_H_INCLUDED
+
 
 #include <string>
 #include <sstream>
