@@ -1,6 +1,6 @@
- An Implementation of BigInteger library in C++
+ //An Implementation of BigInteger library in C++
 
- #ifndef BigInteger_H_INCLUDED
+ #define BigInteger_H_INCLUDED
 #define BigInteger_H_INCLUDED
 
 #include <string>
