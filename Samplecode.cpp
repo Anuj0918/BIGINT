@@ -10,7 +10,7 @@ int main()
     BigInteger n4("7832467326423873423435");                   //n4 defined with string value
     BigInteger n5(n3);                                         //n5 defined with values of n3
 
-    /********Converting to BhimNumbers*********/
+    /********Converting to BigNumbers*********/
     int num1 = -321;
     long long int num2 = -9876543219876543;
     string str1 = "-2112321321321312421534365777";

@@ -58,7 +58,7 @@ class BigInteger {
       BigInteger (const BigInteger &N2)
     {
         if(!isInputCorrect(N2.str)) {
-            cerr << "Invalid Input.. Please Use Valid BhimInteger" << endl;
+            cerr << "Invalid Input.. Please Use Valid BigInteger" << endl;
             exit(0);
         }
         str = N2.str;
@@ -89,14 +89,14 @@ class BigInteger {
 
     static BigInteger to_BigInteger(string s)
     {
-        BhimInteger N3;
+        BigInteger N3;
         N3.str = s;
         return N3;
     }
 
     static BigInteger to_BigInteger(int n)
     {
-        BhimInteger N3;
+        BigInteger N3;
         ostringstream convertstr;
         convertstr << n;
         N3.str = convertstr.str();
@@ -430,9 +430,9 @@ class BigInteger {
         N3.str = multiply(N1.str,N3.str);
         return N3;
     }
-  friend BhimInteger operator /(int num, BhimInteger &N1)
+  friend BigInteger operator /(int num, BigInteger &N1)
     {
-        BhimInteger N3;
+        BigInteger N3;
         ostringstream convertstr;
         convertstr << num;
         N3.str = convertstr.str();
@@ -494,4 +494,121 @@ class BigInteger {
         return result;
     }
 
-    
+      static string factorial(int n)
+    {
+        int i=2;
+        int j=0;
+        int len=1;
+        int A[100000]={0};
+         A[0]=1;
+        int num=0;
+        while(i<=n)
+        {
+            j=0;
+            num=0;
+            while(j<len)
+            {
+                A[j]=A[j]*i;
+                A[j]=A[j]+num;
+                num=A[j]/10;
+                A[j]=A[j]%10;
+                j++;
+            }
+            while(num!=0)
+            {
+                A[len]=num%10;
+                num=num/10;
+                len++;
+            }
+            i++;
+        }
+        len--;
+        string y = "";
+        while(len>=0)
+        {
+            y += (char)(A[len]  + '0');
+            len=len-1;
+        }
+        return y;
+    }
+
+    static BigInteger factBigInteger(int n)
+    {
+        BigInteger N3;
+        N3.str = factorial(n);
+        return N3;
+    }
+
+    static BigInteger factBigInteger(BigInteger N1)
+    {
+        BigInteger N3;
+        string s = N1.str;
+        stringstream convertnum(s);
+        int n = 0;
+        convertnum>>n;
+        N3.str = factorial(n);
+        return N3;
+    }
+
+    static BigInteger factBigInteger(string s)
+    {
+        BigInteger N3;
+        stringstream convertnum(s);
+        int n = 0;
+        convertnum>>n;
+        N3.str = factorial(n);
+        return N3;
+    }
+
+
+     static BigInteger sortBigInteger(BigInteger N1)
+    {
+        string s1 = N1.str;
+        int flag = 0;
+        if(s1[0] == '-')
+        {
+            flag = 1;
+            s1.erase(0,1);
+        }
+
+        sort(s1.begin(), s1.end());
+
+        s1 = removeZero(s1);
+
+        if(flag)
+            s1 = '-' + s1;
+
+        if(s1 == "" or s1 == "-")
+        {
+            BigInteger N2(0);
+            return N2;
+        }
+        BigInteger N2(s1);
+        return N2;
+    }
+   int NthFibonacci(int n){
+    BigInt a(1), b(1), c;
+    if(!n)
+        return c;
+    n--;
+    while(n--){
+        c = a + b;
+        b = a;
+        a = c;
+    }
+    return b;
+}
+
+
+BigInt NthCatalan(int n){
+    BigInt a(1),b;
+    for (int i = 2; i <= n;i++)
+        a *= i;
+    b = a;
+    for (int i = n + 1; i <= 2 * n;i++)
+        b *= i;
+    a *= a;
+    a *= (n + 1);
+    b /= a;
+    return b;
+}
